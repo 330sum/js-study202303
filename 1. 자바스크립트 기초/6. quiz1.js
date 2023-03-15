@@ -22,6 +22,6 @@ while (n <= y) { //끝값
     n++; //증감식
 }
 
-console.log(`${x} ~ ${y}까지의 누적합: ${total}`);
+alert(`${x} ~ ${y}까지의 누적합: ${total}`);
 
 
