@@ -13,7 +13,7 @@ console.log(secret);
 while (true) {
 
     //사용자 입력 답
-    var answer = +prompt('숫자를 입력하세요 [1~100]');
+    var answer = +prompt('숫자를 입력하세요 [1~100]' + secret);
 
     if (secret === answer) {
         alert('정답!');
