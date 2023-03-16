@@ -15,3 +15,30 @@ for (var i = 0; i < length; i++) {
 alert(star);
 
 
+// console.log('========================================');
+
+
+// var star ='*'
+// for (var i =0; i<3; i++) {
+//     console.log(star);
+// }
+
+
+// console.log('========================================');
+
+
+// var star =''
+// for (var i =0; i<3; i++) {
+//     star += '*';
+// }
+// console.log(star);
+
+
+// console.log('========================================');
+
+
+// var star =''
+// for (var i =0; i<3; i++) {
+//     star += '*';
+//     console.log(star);
+// }
