@@ -20,6 +20,7 @@ console.log(`찾은 인덱스 : ${index}`);
 console.log(('========================================================'));
 
 // slice() : 배열을 일정부분 잘라냄. 사본배열을 반환 (원본은 그대로 있음)
+
 foodList.push('오뎅', '순대국밥');
 console.log(foodList);
 
@@ -40,16 +41,41 @@ console.log(sliceFoods3);
 console.log(('========================================================'));
 
 // reverse() : 배열 역순으로 배치, 원본이 변함
-
 var nums = [10, 20, 30, 40, 50];
-var copyNums = nums.slice();
-
+var copyNums = nums.slice(); // 카피본 만들기
 copyNums.reverse();
-
 console.log(copyNums);
 
-// swap로 length/2 만큼 반복하기
-var reverseArray 
+
+console.log('------------------------------------------');
+
+
+var array = ['짜장면', '짬뽕', '볶음밥', '탕수육', '군만두'];
+var left = 0;
+var right = array.length-1;
+
+while (left<right){
+    var temp = array[left];
+    array[left] = array[right];
+    array[right] = temp;
+
+    left++;
+    right--;
+}
+console.log(array);
+
+
+console.log('------------------------------------------');
+
+
+var nums = [10, 20, 30, 40, 50];
+
+for(var i=0; i<nums.length/2; i++){
+    var t = nums[i];
+    nums[i] = nums[nums.length-1-i];
+    nums[nums.length-1-i] = t;
+}
+console.log(nums);
 
 
 
