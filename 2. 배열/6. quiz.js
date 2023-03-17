@@ -15,18 +15,17 @@ var members = ['유노윤호', '최강창민', '영웅재중', '믹키유천', '
 
 while (true) {
 
-    var delTarget = prompt(`현재 멤버: [${members}]\n수정할 이름을 입력하세요.`);
-
-    var target = delTarget;
+    var userAnswer = prompt(`현재 멤버: [${members}]\n수정할 이름을 입력하세요.`);
+    
+    var target = userAnswer;
     var index = members.indexOf(target);
 
-
-    if (index = -1) {
-        alert(`${delTarget}은(는) 잘못된 이름입니다.\n다시 입력하세요!`);
+    if (index === -1) {
+        alert(`${userAnswer}은(는) 잘못된 이름입니다.\n다시 입력하세요!`);
         continue;
     } else {
         var newMember = prompt(`새로운 멤버 이름을 입력하세요.`);
-        members.splice(index, 1, `${delTarget}`);
+        members.splice(index, 1, `${newMember}`);
         alert(`수정 완료!\n현재 멤버: [${members}]`);
     }
 

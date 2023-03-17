@@ -19,7 +19,7 @@ while (true) {
     var target = userAnswer;
     var index = members.indexOf(target);
 
-    if (index = 0) {
+    if (index === -1) {
         alert(`${userAnswer}은(는) 잘못된 이름입니다.\n다시 입력하세요!`);
         continue;
     } else {
@@ -27,7 +27,7 @@ while (true) {
         alert(`삭제완료!\n남은 멤버: [${members}]`);
     }
 
-    if (members === null) {
+    if (members.length === 0) {
         alert('모든 멤버가 삭제되었습니다');
         break;
     }
