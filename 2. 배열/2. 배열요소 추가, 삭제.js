@@ -54,6 +54,6 @@ console.log('------------------------------------------');
 pets.shift();
 console.log(pets);
 
-// unshift() : 배열에 매 첫번째 데이터 추가
+// unshift() : 배열에 맨 첫번째 데이터 추가
 pets.unshift('짝짝이');
 console.log(pets);

@@ -14,7 +14,7 @@ var x = 30,
     y = 40;
 
 var z = '' + x + y;
-console.log(z);
+console.log(z); //3040 (문자열로 변환)
 
 
 var num = +'hello';

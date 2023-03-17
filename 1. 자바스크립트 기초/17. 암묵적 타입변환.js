@@ -1,5 +1,6 @@
 var n1 = 10;
 var n2 = '20';
+var n = hello; //any
 
 console.log(n1 + n2); //숫자 + 문자 = 문자 1020
 
