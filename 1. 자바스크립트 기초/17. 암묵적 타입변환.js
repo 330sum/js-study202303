@@ -10,10 +10,10 @@ var n4 = '100' - 55;
 console.log(n4); // 문자 - 숫자 = 숫자 45
 
 var n5 = '100' * 55;
-console.log(n5); // 문자 * 숫자 = 숫자
+console.log(n5); // 문자 * 숫자 = 숫자 5500
 
 var n6 = '100' * '55';
-console.log(n6); // 문자 * 문자 = 숫자
+console.log(n6); // 문자 * 문자 = 숫자 5500
 
 //당연 'hello' * 50 은 안됨 (근데 파이썬 됨)
 
