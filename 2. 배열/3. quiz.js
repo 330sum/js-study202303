@@ -9,23 +9,26 @@
 2. '그만'이라고 입력하면 질문을 멈추고
    입력했던 숫자배열과 숫자의 총합(배열 요소의 합)을 계산하여 출력하세요.
 */
+
 var nums = [];
-var sum = 0;
-var n = 10;
+
 while (true) {
-
+    
     var input = prompt(`숫자를 입력하세요.\n그만하려면 '그만'이라고 입력하세요`);
-
+    
     if (input === '그만') {
         break;
     }
+    
+    nums.push(+input);
+    alert(`입력된 값 : ${nums}`);
+    
+    var sum = 0;
 
-    nums.push(parseInt(input));
-    alert(`${nums}`);
-
-    for (var i = 0; i < n; i++) {
+    for (var i = 0; i < nums.length; i++) {
         sum += nums[i];
     }
+    // alert(`입력된 값의 누적합 : ${sum}`);
 
 }
 

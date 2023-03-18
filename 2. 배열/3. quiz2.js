@@ -11,26 +11,25 @@
 */
 
 // 숫자를 저장할 배열
-var nums = [];
+var numbers = [];
 
 while (true) {
 
-    var input = prompt('숫자를 입력하세요.\n그만하려면 \'그만\'이라고 입력하세요!');
+    var inputData = prompt('숫자를 입력하세요.\n그만두려면 \'그만\'이라고 입력하세요!')
 
-    if (input === '그만') break;
+    if (inputData === '그만') break;
 
     // 배열에 데이터 저장
-    // '그만'은 배열에 넣으면 안되니까 이 위치!
-    nums.push(+input);
+    // if문 아래 배치 되어야 함! 만약 if문 위에 배치되는 경우 배열안에 '그만'도 들어가기 때문
+    numbers.push(+inputData);
 }
 
-//총합 구하기
+// 총합 구하기
 var total = 0;
 
-for (var n of nums) {
+for (var n of numbers) {
     total += n;
 }
 
-// console.log(numbers);
-// alert(numbers);
-alert(`입력한 숫자 목록 [${nums}]\n입력한 숫자 총합: ${total}`);
+
+alert(`입력한 숫자 목록 [${numbers}]\n입력한 숫자 총합: ${total}`);
