@@ -13,8 +13,8 @@ var arr2 = arr1;
 arr1[1] = 999;
 arr2[0] = 77;
 
-console.log('arr1 :', arr1); //[77, 999, 3, 4]
-console.log('arr2 :', arr2); //[77, 999, 3, 4]
+console.log('arr1 : '+ arr1); // arr1 : 77, 999, 3, 4]
+console.log('arr2 :', arr2);  // arr2 : [77, 999, 3, 4]
 
 
 console.log('========================================');

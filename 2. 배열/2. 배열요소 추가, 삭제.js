@@ -12,11 +12,11 @@ console.log('------------------------------------------');
 // 배열 요소 추가 시, 위는 좋은 방법이 아님 (자바에서는 아예 안됨)
 
 // 아래는 성능적 측면에서 문제가 없는 방법 임
-pets.push('징징이');
+pets.push('징징이'); //연결리스트 방식으로 진행 됨
 pets.push('어흥이');
 var newLength = pets.push('거부기', '콩콩이');
 console.log(pets);
-console.log(newLength);
+console.log(newLength); //7
 
 console.log('------------------------------------------');
 
