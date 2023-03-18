@@ -1,6 +1,5 @@
 var foodList = ['닭꼬치', '볶음밥', '짜장면', '족발'];
 
-var count = 0;
 
 // indexOf() : 배열의 특정 데이터가 몇번 인덱스에 있는지 탐색
 var target = '짜장면';
@@ -8,6 +7,7 @@ var index = foodList.indexOf(target);
 console.log(`찾은 인덱스 : ${index}`);
 
 
+// var count = 0;
 // var target = '짜장면';
 // for(var food of foodList) {
 //     if (food === target) {
