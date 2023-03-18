@@ -1,6 +1,6 @@
 var n1 = 10;
 var n2 = '20';
-var n = hello; //any
+// var n = hello; //any
 
 console.log(n1 + n2); //숫자 + 문자 = 문자 1020
 
@@ -40,7 +40,9 @@ if ('hello!!!!') console.log('ok9');
 if ([]) console.log('ok10'); // 빈배열
 if ([1, 2, 3, 4, 5]) console.log('ok11'); // 배열
 if (function () {}) console.log('ok12'); // 함수
-if ({name: 'kim'}) console.log('ok13'); // 객체
+if ({
+        name: 'kim'
+    }) console.log('ok13'); // 객체
 
 
 
@@ -48,20 +50,20 @@ console.log('===============================================');
 
 
 for (var n = 1; n <= 10; n++) {
-    if (n % 2 === 0) {
-        console.log('짝수입니다.');
+    if (n % 2 === 0) { //논리식
+        console.log(n + ' : 짝수입니다.');
     } else {
-        console.log('홀수입니다.');
+        console.log(n + ': 홀수입니다.');
     }
 }
 
 console.log('-----------------------');
 
 for (var n = 1; n <= 10; n++) {
-    if (n % 2) { // 나머지가 0 이외면 다 true로 됨 (생각해보면 자바만 안됨)
-        console.log('홀수입니다.');
+    if (n % 2) { // 논리식 아닌데, 나머지가 0 이외면 다 truthy값으로 인식 (생각해보면 자바만 안됨)
+        console.log(n + ' : 홀수입니다.');
     } else {
-        console.log('짝수입니다.');
+        console.log(n + ' : 짝수입니다.');
     }
 }
 
