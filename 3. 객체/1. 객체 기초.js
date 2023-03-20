@@ -126,6 +126,7 @@ for (var k in dog) {
 //     console.log(dog.'name'); // 이렇게 참조 되는 거랑 똑같음. 그래서 꼭 대괄호!
 // }
 
+// value를 반복해서 추출 (value 반복 순회)
 for (var k in dog) {
     console.log(dog[k]); 
 }

@@ -36,7 +36,7 @@ while (true) {
         if (log[i].account.includes(log[i].account)) {
             var userPW = prompt('비밀번호를 입력하세요');
 
-            if (userPW = log[i].password) {
+            if (userID === log[i].account && userPW === log[i].password) {
                 alert(`${log[i].username}님 환영합니다!`);
                 break;
             } else {
