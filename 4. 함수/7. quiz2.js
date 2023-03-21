@@ -43,7 +43,7 @@ function round(number, digit) {
     // /1000 = 5.779
 
     // 2째자리까지 Math.round(number * 10 ** 2) / 10 ** 2
-    // 3째자리까지 Math.round(number * 10 ** 2) / 10 ** 2
+    // 3째자리까지 Math.round(number * 10 ** 3) / 10 ** 3
     // digit째자리까지 Math.round(number * 10 ** digit) / 10 ** digit
     return Math.round(number * 10 ** digit) / 10 ** digit;
 }
