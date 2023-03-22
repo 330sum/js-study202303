@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ul#fruits>li.fr*4 -->
+    <ul id="fruits">
+        <li class="fr">사과</li>
+        <li class="fr banana">바나나</li>
+        <li class="fr grape">포도</li>
+        <li class="fr">복숭아</li>
+    </ul>
+
+    <script>
+        const $grape = document.querySelector('.grape');
+        //CSS선택자니까 .grape임! 쩜을 생략하면 안됨! 쩜이 없으면 태그의 이름임!
+        //만약 '.fr'라고 넣으면, 인수로 전달한 CSS선택자를 만족하는 요소 노드가 여러 개인 경우 첫 번째 노드만 반환함. 
+        //만약 '.grape123'이라고 넣으면 null을 반환함
+        //만약 '#grape'이라고 넣으면 null을 반환함 (선택자문법은 안 틀렸지만, 현재 존재하지 않음)
+        //만약 '()grape'라고 넣으면 DOMException 에러 (선택자문법 틀린 경우)
+
+        //const $grape = document.querySelector('#fruits li:nth-child(3)'); //포도
+        //const $grape = document.querySelector('.banana + li'); //li를 선택하는데 바로 위의 형이 banana //포도
+        //const $grape = document.querySelector('#fruits > li'); //사과 (fruits의 직속대상 li가 4개인데 그 중 첫번째노드만 반환)
+
+        $grape.textContent = '맛있는 포도';
+
+
+
+
+        // 선택자에 해당하는 모든 요소를 취득
+        // const elements = document.querySelectorAll('.fr');
+        // console.log(elements); // 콘솔에서 찍으면 [li.fr, li.fr.banana, li.fr.grape, li.fr] 생긴모습이 배열처럼 보이는데, 배열 아님! (유사배열임)
+        
+        // elements.pop(); // 배열아니여서 못함!
+        // console.log(elements); 
+
+
+        // 첫번째 요소에 접근하는 방법 (유사배열, 아래같이 배열처럼 접근하는것이 가능함(단, 배열메서드 못씀))
+        // elements[0].style.background = 'red';
+        // for (const $li of elements) {
+        //     $li.style.border = '1px dashed skyblue';
+        // }
+
+        // 유사배열은 객체처럼 사용할 수 있음!
+        // 객체처럼 사용해서 아래처럼 사용 할 수 있음
+        // elements.age = 10; // 객체에 프로퍼티 추가하는 거 (배열은 이런거 안됨)
+        // console.log(elements);
+
+        // 유사배열은 배열이 아니기 때문에 배열메서드 사용불가 
+        // (그래서 유사배열들은 별다른 이유가 없는 한, 찐배열로 바꿔서 사용할 것! 그래야 활용도가 높아짐(필터링, splice 등))
+        
+
+        // querySelectorAll 잡아오면 무조건 유사배열로 잡아옴 그러니 무조건 찐배열로 바꾸기!
+        // 유사배열을 실제배열로 만드는 방법
+        const elements = [...document.querySelectorAll('.fr')];
+        console.log(elements); 
+
+        elements.push($grape);
+        console.log(elements);
+
+
+        // 배열이니까 구조분해할당도 가능
+        const [a, b, c, d] = [...document.querySelectorAll('li')];
+        d.textContent = '어피치';
+
+        // 배열이니까 forEach()도 사용가능
+        elements.forEach($li => { // li태그 하나씩 뽑아줌
+            $li.style.color = 'blue';
+        });
+    </script>
+</body>
+
+</html>
