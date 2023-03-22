@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+        <li id="apple">사과</li>
+        <li id="banana" style="background: greenyellow;">바나나</li>
+        <li id="grape">포도</li>
+        <li id="peach">복숭아</li>
+    </ul>
+    
+    <script>
+        // console.log(document.body.firstElementChild);
+
+        // 자바스크립트에서 변수를 사용할 때
+        // 변수마다 성질이 어떤 것인지 잘 모르는데, 
+        // 변수 앞에 $를 붙이면 태그가 들어 있구나 생각함! 
+        // $는 태그 접두어로 사용! 관례적으로 사용함!
+        const $banana = document.getElementById('banana'); // 속도는 querySelector보다 빠르지만, 엄청난 차이 아님.
+        // const $banana = document.querySelector('#banana');
+        // $banana는 객체! (document는 object)
+        // 브라우저 콘솔창에 띄우면 태그이름으로만 보여줌 
+        // 객체(중괄호)의 정보 보는 방법(내부의 키값 보는방법): Elements -> Properties
+        
+
+        // 바나나를 참조하려면?
+        console.log($banana.textContent); 
+        // $banana는 객체니까, (객체.키) 로 접근하면 벨류를 가져올 수 있음
+
+        // LI에 접근하는 방법? 
+        console.log($banana.tagName);
+
+        // id에 접근하는 방법?
+        console.log($banana.attributes[0]); // id="banana"
+        console.log($banana.attributes.id); // id="banana"
+        console.log($banana.attributes.id.value); // banana (id="banana"에서 banana만 뽑아낸것)
+
+        $banana.attributes.id.value = '수고요~'; //id값이 조작됨
+        $banana.style.background = 'red';
+
+        // 요소노드(html태그객체)를 가져오는 방법은 다양함(id, CSS선택자 등)
+        // id가 있는경우, id로 가져오는 것이 속도가 제일 빠름
+
+
+        // id가 grape인 요소노드를 취득하여 배경색상을 violet으로 가로길이를 fit-content 변경
+        const $grape = document.getElementById('grape');
+        $grape.style.backgroundColor = 'violet';
+        $grape.style.width = 'fit-content';
+        //중간에 변화 줄때만 코드로 조작, 바꾸고 싶으면 CSS 사용할것
+
+
+        //getElements~~ 보다는 css선택자로 요소노드(태그객체)를 가져옴
+        // 왜? css선택자에는 태그이름(태그선택자), 클래스이름(클래스선택자), 후손선택자 등 다양하기 때문에
+
+
+    </script>
+
+
+</body>
+</html>
