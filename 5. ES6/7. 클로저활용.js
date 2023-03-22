@@ -101,10 +101,7 @@ const counter = (() => {
     };
 })();
 
-const {
-    increase,
-    decrease
-} = counter; //구조분해할당에서 배움!
+const { increase, decrease } = counter; // 객체 구조분해할당 (객체 프로퍼티의 키 값을 통해 추출)
 
 console.log(increase()); // 1
 console.log(increase()); // 2
