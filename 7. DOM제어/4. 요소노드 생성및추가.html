@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li>사과</li>
+    </ul>
+
+
+    <script>
+        // 주제: 요소노드 생성 및 추가
+        // 문제. 사과의 다음형제로 바나나 만들어주기!
+        // 순서1. li의 부모ul 잡아오기
+        // 삭제하거나 추가하고 싶을때는 무조건 부모를 잡아와야함 (그래서 부모ul 잡아온거)
+        // const $fruits = document.getElementById('fruits');
+        const $fruits = document.querySelector('#fruits');
+
+        // 순서2. li태그 생성 (코드로 만드는 거) 이건 진짜 깡통태그임. 아무것도 없음. 그냥 <li></li> 만든것
+        const $newLi = document.createElement('li');
+        // 순서3. 텍스트 추가 : <li>바나나동생</li>
+        $newLi.textContent = '바나나동생';
+        // 순서4. 새로운 노드를 자식으로 추가하는 명령 (이 만든 li바나나동생을 부모ul에게 자식으로 받아줘!라고 하는 명령)
+        $fruits.appendChild($newLi);
+
+
+
+
+    
+        // 주제응용: 태그이름과 텍스트를 전달받으면 태그를 생성하는 함수
+        // 문제. 만약, 바나나 외에 다른 것도 추가하고 싶을 때 -> 함수 만들기
+        function makeTag(tagName, text = '') {
+            const $newTag = document.createElement(tagName);
+            if (text) $newTag.textContent = text; // text가 있으면 text를 textContent에 넣어라
+            return $newTag;
+        }
+        // 부모태그를 알려주면 자식을 추가해주는 함수
+        function appendNewTag($parent, $target) {
+            $parent.appendChild($target);
+        }
+
+
+
+        // 만들면서 추가하는 함수
+        // 빌드업1
+        // function append() {
+        //     makeTag();
+        //     appendNewTag($parent, $target);
+        // }
+
+        // 빌드업2
+        // function append($parent, tagName, text = '') {
+        //     appendNewTag($parent, makeTag(tagName, text));
+        // }
+
+        // 빌드업3 - items. 쩜 계속 쓰기싫으니까 구조분해하기
+        // function append(items) {
+        //     const { $parent, tagName, text } = items;
+        //     appendNewTag(items.$parent, makeTag(items.tagName, items.text));
+        // }
+
+        // 빌드업3 - 이 객체 뿌수는 걸 바로 매개변수에서도 할 수있음
+        function append( {$parent, tagName, text} ) {
+            appendNewTag($parent, makeTag(tagName, text));
+        }
+
+        // append({
+        //     $parent: $fruits,
+        //     tagName: 'li',
+        //     text: '바나나'
+        // });
+
+        // append({
+        //     $parent: $fruits,
+        //     tagName: 'li',
+        //     text: '망고'
+        // });
+
+
+        // 과일 10개 이상 추가하게 된다면?
+        const fruitNames = ['바나나', '딸기', '포도', '자몽', '오렌지', '레몬'];
+
+        fruitNames.forEach(fn => {
+
+            append({
+                $parent: $fruits,
+                tagName: 'li',
+                text: fn
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
