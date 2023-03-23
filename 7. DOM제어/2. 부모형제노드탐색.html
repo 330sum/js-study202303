@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <ul id="fruits">
+            <li class="fr apple">사과</li>
+            <li class="fr banana">바나나</li>
+            <li class="fr grape">포도</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <!-- <p></p> -->
+    </div>
+
+    <script>
+        // ul 요소노도를 취득
+        const $fruits = document.getElementById('fruits');
+
+        // 부모요소 탐색 (부모는 하나니까 아래 둘중 어떤걸 써도 상관없음)
+        // parentElement
+        // parentNode
+        const $wrap = $fruits.parentElement; // div.wrap
+
+
+        // 부모노드 잡아서 타고타고 내려가서 자식들 잡아서 찐배열로 만드는 것도 가능
+        //const [a, b, c] = [...$wrap.firstElementChild.children];
+        const [$apple, $banana, $grape] = [...$wrap.firstElementChild.children];
+        // div. ul . [li]
+
+
+
+
+        //형제요소 탐색
+        const sameFlag = $banana.nextElementSibling === $grape; //바나나야 다음형제 데리고와
+        console.log(sameFlag); //true
+
+        const sameFlag2 = $banana.previousElementSibling === $apple;
+        console.log(sameFlag2); //true
+
+
+
+
+
+
+        // 애플한테 할머니 모셔와
+        // 그러면 애플이 엄마한테 가고 할머니 부름
+        $apple.parentElement.parentElement;
+        // 이런식으로 추적해야하는 경우가 있음
+        // 언제? 일정관리앱에서 일정목록(li) 삭제버튼 누르면 해당li(그 일정 한줄)를 지워달라.고 할때 쓰는거임! (다른li가 지워지면 안됨! 내가 삭제버튼 누른! 그 줄 li 지우라고)
+        // 근데 이렇게 타고 들어가는 것보다 더 좋은 방법 있음!
+
+
+        // closest('CSS선택자'); - 가장 가까운 태그를 찾음
+        // 여기에 .wrap이 여러개라고 가정하고
+        // 애플아, 너한테서 가장 가까운 .wrap을 찾아줘!
+        var foundElem = $apple.closest('.wrap');
+        console.log('찾은요소:', foundElem); // div.wrap
+    </script>
+
+</body>
+
+</html>
