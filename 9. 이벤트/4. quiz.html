@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            font-size: 2em;
+        }
+
+        .menu ul {
+            list-style: none;
+            font-size: 1.3em;
+            margin: 0;
+        }
+
+        .triangle {
+            font-size: 2em;
+            color: darkgreen;
+            display: inline-block;
+
+        }
+
+        .rotate {
+            transform: rotate(90deg);
+
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lunches" class="menu">
+        <span class="title">추천메뉴(Click Me!!)</span>
+        <ul>
+            <li>돈까스</li>
+            <li>군만두</li>
+            <li>볶음밥</li>
+            <li>마파두부</li>
+        </ul>
+    </div>
+
+    <script>
+        //온클릭이벤트
+        const $menu = document.querySelector('.menu');
+        const $newSpan = document.createElement('span');
+        console.log($newSpan);
+        $newSpan.textContent = '▶';
+        $newSpan.setAttribute('class', 'triangle');
+        $menu.insertBefore($newSpan, $menu.firstChild);
+
+
+
+
+
+        const $list = document.querySelector('ul');
+        console.log($list);
+        $list.setAttribute('class', 'hide');
+
+        const $title = document.querySelector('.title');
+
+        $title.onclick = () => {
+
+            $list.classList.toggle('hide');
+            $newSpan.classList.toggle('rotate');
+        }
+    </script>
+</body>
+
+</html>
