@@ -67,7 +67,9 @@
         //4. id="list"인 요소의 첫 위치에 새요소 "<li>list_1</li>"를 추가하세요.
         // $newLi.textContent = 'list_1';
         // $list.insertBefore($newLi, $list.firstElementChild);
+        // 아이코 ㅠㅠ 이렇게 변경하면 안됨! 
 
+        // 쌤처럼 새로운 li를 생성해야함!
         const $newLi2 = document.createElement('li');
         $newLi2.textContent = 'list_1';
         $list.insertBefore($newLi2, $list.firstElementChild);
