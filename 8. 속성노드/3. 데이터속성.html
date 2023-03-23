@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul class="users">
+        <li data-user-number="4321" data-role="common">김철수</li>
+        <li data-user-number="9999" data-role="admin">박영희</li>
+    </ul>
+
+    <script>
+        // 데이터 속성의 값들이 dataset으로 관리 됨
+        // dataset: DOMStringMap {userNumber: '4321', role: 'common'}
+        const [$u1, $u2] = [...document.querySelector('.users').children]; // li들 구조분해할당
+
+        // 철수 유저넘버 궁금
+        const KimNumber = +$u1.dataset.userNumber;
+        console.log(KimNumber + 10); //4321 이거 타입은 문자임! 20번라인 보면 문자열로 '' 되어있음! 숫자로 하고싶으면 +
+        
+        const role = $u2.dataset.role;
+        console.log(role); //admin
+        $u2.dataset.role = 'gold';
+
+
+        // 네이버 다크모드 콘솔에서 코드로 쳐서 바꾸기
+        // document.documentElement.dataset.dark = true;
+
+
+
+        // 데이터속성 값 추가
+        $u1.dataset.hahaHoho = '하하호호'; //data-haha-hoho="하하호호
+
+        // 데이터속성 값 삭제
+        delete $u1.dataset.role;
+    </script>
+
+</body>
+
+</html>
