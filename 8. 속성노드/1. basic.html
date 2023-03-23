@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="email" id="account" value="abc@gmail.com">
+
+    <script>
+
+        // const $input = {
+        //     tagName: 'INPUT',
+        //     textContent: '',
+        //     attributes: NamedNodeMap
+        // };
+
+        // // 타입속성에 대한 객체도 만들어짐!
+        // // 어트리뷰트노드 하나당 하나씩
+        // const typeAttr = {
+        //     name: 'type',
+        //     value: 'email'
+        // };
+        // const idAttr = {
+        //     name: 'id',
+        //     value: 'account'
+        // };
+        // const valueAttr = {
+        //     name: 'value',
+        //     value: 'abc@gmail.com'
+        // };
+
+
+        // // 유사배열 객체에 담김
+        // const NamedNodeMap = {
+        //     0: typeAttr,
+        //     1: idAttr,
+        //     2: valueAttr,
+        //     length: 3,
+        //     type: typeAttr,
+        //     id: idAttr,
+        //     value: valueAttr
+        // };
+
+        // 타입속성 접근방법
+        // 인덱스로 접근하거나 객체처럼 쩜타입으로 접근가능
+
+        // NamedNodeMap이 요소 노드의 attributes 프로퍼티에 저장됨
+
+
+        // input요소 잡아오기
+        const $input = document.querySelector('input');
+
+        console.log($input.attributes[0]);
+        console.log($input.attributes.type);
+        console.log($input.attributes.type.value); // email
+        console.log($input.attributes.value.value); // abc@gmail.com
+        console.log($input.attributes.id.value); // account
+
+        $input.attributes.id.value = 'acc';
+        $input.attributes.value.value = 'zzz';
+        $input.attributes.type.value = 'checkbox';
+
+        // 요소노드안에 각각의 속성노드들이 모여있다
+
+
+        // 맵을 만들때 속성을 제어한다는게 많이있음
+        // 보통 클래스 속성을 제어해서 스타일 바뀌게 하는 경우가 많음
+        // 근데 이렇게 속성값 바꾸기 힘드니까
+        // 그런기능들을 편하게 조작하기 위해서 함수들이 꽤 있음
+    </script>
+
+
+</body>
+
+</html>
