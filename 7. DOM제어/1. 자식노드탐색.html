@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ul#fruits>li.fr*3 -->
+    <ul id="fruits">
+        <li class="fr apple">사과</li>
+        <li class="fr banana">바나나</li>
+        <li class="fr grape">포도</li>
+    </ul>
+
+    <div class="box">
+        <!-- <p></p> -->
+    </div>
+
+    <script>
+        // ul 요소노드를 취득
+        const $fruits = document.getElementById('fruits');
+        console.log($fruits); // 브라우저 콘솔창에 찍어보는 습관기르기!
+
+        // ul 요소노드를 취득하면
+        // li를 가져올 때, querySelectorAll로 다 안가져와도 됨
+        // 아래 방법들로 자식노드들을 가져올 수 있음
+
+
+
+
+        // ul 밑에 있는 자식 li들 탐색
+        // [O] children : 3개 (유사배열)
+        // [X] childNodes: 7개 (앞뒤공백까지 포함함)
+        console.log($fruits.children); // 유사배열 (브라우저 콘솔창에서 보면됨)
+
+        const $children = [...$fruits.children]; // 유사배열->찐배열로 바꾸기 (배열구조분해할당)
+        console.log($children); // 찐배열
+
+        // children프로퍼티 활용해서 li의 첫번째와 마지막 가져오는 방법
+        //const $first = $children[0];
+        //const $last = $children[$children.length-1];
+
+
+
+        
+
+        // ul 밑에 있는 첫번째 li와 마지막 li 탐색
+        // [O] firstElementChild : li.fr.apple
+        // [O] lastElementChild
+        // [X] firstChild : text 
+        // [X] lastChild
+        const $first = $fruits.firstElementChild;
+        const $last = $fruits.lastElementChild;
+
+        $first.style.fontSize = '2em';
+        $last.style.transform = 'rotate(180deg)';
+        $last.style.width = 'fit-content';
+
+
+
+
+
+
+        // 자식요소 유무 확인방법
+        // [O-편법] !!$부모태그.children.length
+        // [O-커스텀함수] hasChildren($부모태그)
+        // function hasChildren($target) {
+        //     return !!$target.children.length;
+        // }
+        // [X] hasChildNodes() : Nodes는 공백까지 포함하는 위험한 칭구..
+        // 참고로 함수 이름 앞에 has나 is가 붙으면 (물어보는거임) 99% 리턴타입이 boolean임!
+        const $box = document.querySelector('.box');
+        console.log($box.hasChildNodes()); //true (자식이 없는데, 공백 때문에 true로 나옴)
+        // 그래서 편법으로 자식요소 유무확인은 아래방법 사용하기
+        console.log(!!$box.children.length);
+        // 자식이 없으면 length가 0임. 0은 falsy로 됨. (!! 붙여서 논리로 변환하기) 1-18확인
+
+
+        // 함수가 없으면 내가 만들면 되지!
+        function hasChildren($target) {
+            return !!$target.children.length;
+        }
+        console.log(hasChildren($box));
+    </script>
+
+</body>
+
+</html>
