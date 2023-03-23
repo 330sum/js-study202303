@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>포도</li>
+    </ul>
+
+    <script>
+        // 주제: 요소노드 교체
+        // 순서1. 부모노드 잡아오기
+        const $fruits = document.getElementById('fruits');
+
+        // const $newLi = {...$fruits[0]}; (이거안됨)
+        // 객체복사 했는데, 이게 순수객체가 아니기 때문에 클론노드로 복사하기
+
+        // 순서2. 클론노드로 복사하기
+        // 이걸 쓰는 이유는 나중에 id랑 class 막 여러개 붙어있을 때 사용. (지금은 깡통li라서 잘 못느끼지만)
+        const $newLi = $fruits.firstElementChild.cloneNode();
+        // 순서3. 텍스트추가
+        $newLi.textContent = '복숭아';
+
+        console.log($newLi);
+
+
+        // 일정관리앱에서 되돌리기버튼 누르면 span태그가 input으로 교체됨 (노드교체)
+
+        // 노드 삭제하고 insertBefore로 넣는것 보다
+        // 그냥 지우고 교체하는 방법이 있음
+        // 순서4. 노드 교체 (새로운거, 기존거나가야하는거)
+        // mdn 읽어보니까 사용방법이 아래와 같음
+        // replacedNode = parentNode.replaceChild(newChild, oldChild);
+        $fruits.replaceChild($newLi, $fruits.firstElementChild); // 사과가 지워지고 복숭아 추가
+        // 지금같은 예제에서 텍스트만 바뀌어서 잘 모르지만, 일정관리앱에서는 효과가 큼!
+
+
+
+
+
+        
+
+
+        // 주제: 요소노드 삭제
+        // 자식 노드 삭제
+        $fruits.removeChild($fruits.lastElementChild);
+
+
+        // 자식 노드 전체 삭제 - 방법1
+        $fruits.innerHTML = '';
+
+
+        // 자식 노드 전체 삭제 - 방법2
+        // 자식들을 다 꺼내서 배열로 반복해서 지우기
+        const children = [...$fruits.children];
+
+        for (const $li of children) {
+            $fruits.removeChild($li);
+        }
+
+
+        // 자식 노드 전체 삭제 - 방법3
+        [...$fruits.children].forEach($li => $fruits.removeChild($li));
+    </script>
+
+</body>
+
+</html>
