@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>포도</li>
+    </ul>
+
+
+    <script>
+        // 주제: 요소노드 삽입
+        // 순서1. 새로운 태그를 넣을때는 무조건 부모 잡아오기
+        const $fruits = document.getElementById('fruits');
+        // 순서2. 깡통 li태그 생성
+        const $newLi = document.createElement('li');
+        // 순서3. 텍스트 추가
+        $newLi.textContent = '망고';
+
+        //푸르츠야, 자식을 추가해줘(마지막에 추가됨)
+        // $fruits.appendChild($newLi);
+        // 아 근데, 난 중간에 넣고 싶어. 아니. 맨처음으로 넣고싶어! 
+        // mdn 읽어보니까 사용방법이 아래와 같음
+        // 순서4. insertBefore(추가할태그, 참조태그)
+        // var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+
+        // $fruits.insertBefore($newLi, $fruits.firstElementChild); // 첫번째요소 앞에 // 망고,사과,바나나,포도
+        // $fruits.insertBefore($newLi, $fruits.lastElementChild); // 마지막요소 앞에 // 사과,바나나,망고,포도
+        // $fruits.insertBefore($newLi, $fruits.children[1]); // 인덱스1번 앞에 // 사과,망고,바나나,망고,포도
+        // $fruits.insertBefore($newLi, document.querySelector('#fruits li:first-child'));  // 사과 앞에
+        $fruits.insertBefore($newLi, $fruits.firstElementChild.nextElementSibling); // 바나나 앞에 
+    
+
+
+        // 주제: 요소노드 위치이동
+        // 위치를 옮기고 싶을 때 (노드이동)
+        // 부모한테 명령해야 함
+        // 좀 쉽게 보기 위해서 자식들을 꺼내 놓자! 배열로
+        const [$apple, $mango, $banana, $grape] = [...$fruits.children];
+    
+        // 방법1.
+        // 화면에 없는 걸 넣으면 맨 마지막에 추가되고
+        // 화면에 있는 기존태그를 넣으면 맨 마지막으로 이동됨
+        $fruits.appendChild($apple);
+    
+        // 방법2.
+        //insertBefore 도 똑같은 작용함
+        $fruits.insertBefore($banana, $apple); // 바나나가 애플 전으로 이동
+
+    
+    </script>
+
+
+</body>
+
+</html>
