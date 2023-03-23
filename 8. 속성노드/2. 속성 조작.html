@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+
+<body>
+
+    <div class="box" id="item" title="안녕하세요"></div>
+
+    <script>
+        // 박스 요소노드 가져오기
+        const $box = document.querySelector('.box');
+        
+
+        // 속성값 참조
+        // const hello = $box.attributes.title.value;
+        // console.log(hello);
+        const hello = $box.getAttribute('title');
+        console.log(hello); // 브라우저 콘솔창에 안녕하세요
+
+        //네이버구글 이미지 상위 50개 꺼내야 할때, 이미지 속성값 src 뽑아서 할 수있음 (원하는 태그만 쏙쏙 뽑아낼때)
+        // 스크립트를 잘하면 재미있는 짓을 많이 할 수 있음
+
+
+        // 속성값 변경
+        $box.setAttribute('id', 'watermelon');
+
+        // 속성값 추가
+        $box.setAttribute('style', 'border-radius:50%;');
+
+        // 속성값 제거
+        $box.removeAttribute('id');
+
+        // 속성값 유무 확인
+        // 사용하는 이유? 안전한 수정을 위해서 속성값 확인 후!
+        console.log(($box.hasAttribute('id'))); // 브라우저 콘솔창에 false
+        console.log(($box.hasAttribute('title'))); // 브라우저 콘솔창에 true
+
+    </script>
+
+</body>
+
+</html>
