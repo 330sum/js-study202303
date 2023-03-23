@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: red;
+        }
+
+        .green {
+            color: greenyellow;
+            background: green;
+        }
+
+        .blue {
+            color: aqua;
+            background: blue;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box green" style="font-weight: 700;">Hello</div>
+
+    <button id="add">클릭!</button>
+
+    <script>
+        const $box = document.querySelector('.box');
+
+        $box.style.fontStyle = 'italic';
+        // $box.style.display = 'none';
+
+
+
+        // 클래스 조작
+        // className(클래스 통으로)과 classList(하나하나 제어가능)의 차이 (classList 사용하기)
+        // $box.className = 'blue';
+        // classList 까보면 유사배열 (배열같은것도 있고, value있음)
+        $box.classList.add('circle');
+        $box.classList.add('aaa', 'bbb', 'ccc'); //한번에 클래스 3개 추가하는 것도 가능
+
+        $box.classList.remove('green');
+        $box.classList.remove('aaa', 'ccc');
+
+        $box.classList.add('green');
+        $box.classList.replace('green', 'blue'); //green을 blue로 바꿀래
+
+        // 클래스 존재 유무확인
+        console.log($box.classList.contains('box')); //true
+        console.log($box.classList.contains('apple')); //false
+
+
+        // toggle : 현재 해당클래스가 없으면 추가, 있으면 지움 
+        $box.classList.toggle('circle');
+        $box.classList.toggle('circle');
+
+
+
+
+        // 버튼잡아오기
+        const $btn = document.getElementById('add');
+        $btn.onclick = e => {
+            // $box.classList.toggle('circle');
+
+
+            // 토글모르면
+            const CLASSNAME = 'circle'; // 이런거 꼭 주의하기!!
+
+            if ($box.classList.contains(CLASSNAME)) {
+                $box.classList.remove(CLASSNAME);
+            } else {
+                $box.classList.add(CLASSNAME);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
