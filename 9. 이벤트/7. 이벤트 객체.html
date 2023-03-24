@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- p+em.msg -->
+    <p>아무곳이나 클릭하세요!</p>
+    <em class="msg"></em>
+
+    <hr>
+    <hr>
+    <hr>
+
+    <input type="text" id="text">
+    <p class="show"></p>
+
+
+    <script>
+        // body에 이벤트 걸어서 화면전체에서 작동하도록 만들기
+        // body에 안걸림... document에 걸자!
+        // document.onclick = function () {
+        //     alert('!!');
+        // };
+
+
+
+        // document.onclick = function (메롱) {
+        //     console.log(메롱);
+        // };
+        // 브라우저 콘솔보면 내가 브라우저에서 한 모든 것을 알고 있음
+        // 메롱 -> event -> e (보편적)
+
+
+        // // 빌드업1. 콘솔에 내가 클릭하는 곳 좌표 찍어보기
+        // document.onclick = function (e) {
+        //     console.log(`x: ${e.x}, y: ${e.y}`);
+        // };
+
+        // // 빌드업2. em태그 잡아와서 브라우저에 em부분에 좌표 뿌려주기
+        // document.onclick = function (e) {
+        //     const $em = document.querySelector('.msg');
+        //     $em.textContent = `x: ${e.x}, y: ${e.y}`;
+        // };
+
+        // // 빌드업3. 딕스트럭처링(빌드업1)
+        // document.onclick = function (e) {
+        //     const { x, y } = e;
+
+        //     const $em = document.querySelector('.msg');
+        //     $em.textContent = `x: ${x}, y: ${y}`;
+        // };
+
+        // // 빌드업4. 딕스트럭처링(빌드업2)
+        // document.onclick = function ({ x, y }) {
+        //     const $em = document.querySelector('.msg');
+        //     $em.textContent = `x: ${x}, y: ${y}`;
+        // };
+
+
+
+
+
+        // 빌드업2. em태그 잡아와서 브라우저에 em부분에 좌표 뿌려주기
+        document.onclick = function (e) {
+
+            // console.log(e); //콘솔에 PointerEvent라고 뜸
+
+            const $em = document.querySelector('.msg');
+            $em.textContent = `x: ${e.x}, y: ${e.y}`;
+        };
+
+        const $textInput = document.querySelector('[type=text]');
+        console.log(($textInput)); // 개발에서 단위테스트가 진짜 중요! 매번 타겟팅이 정확한지 콘솔로 찍어보기
+
+
+        // 입력하고 엔터치면 p태그에 보여주게 만들기
+        // 입력하신 아이디는 사용가능합니다
+        // $textInput.addEventListener('keyup', e => {
+        //     // console.log(e); // 콘솔에서 input태그에 a치면 KeyboardEvent라고 뜨고 key: 'a', 엔터, esc눌러보기
+
+        //     const $show = document.querySelector('.show');
+        //     if (e.key === 'Enter') {
+        //         $show.textContent = $textInput.value;
+        //         $textInput.value = ''; // 엔터치면 텍스트 다 날라가도록
+        //     }
+        // });
+
+
+        // 입력한 거 실시간으로 보여주도록 하려면 if만 빼면 됨
+        $textInput.addEventListener('keyup', e => {
+            const $show = document.querySelector('.show');
+            $show.textContent = $textInput.value;
+
+        });
+    </script>
+
+</body>
+
+</html>
