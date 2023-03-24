@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #fruits {
+            display: flex;
+            list-style: none;
+            padding: 20px;
+            border: 2px solid red;
+            flex-wrap: wrap;
+        }
+        #fruits li {
+            width: 100px;
+            cursor: pointer;
+            background: orange;
+            margin-right: 10px;
+        }
+        .active {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+    </ul>
+
+    <div>선택된 과일: <em class="msg">Apple</em></div>
+
+    <label>
+        # 새로운 과일 추가하기: 
+        <input type="text" class="text-box">
+        <button id="add">추가</button>
+    </label>
+
+    <script>
+        // 클릭하면 class="active"가 옮겨 다녀야 함
+        // 각 li요소에 이벤트 핸들링을 하나씩 만드는 것보다
+        // ul에게 하나 걸면, li가 터져도 어차피 부모ul꺼 터트리기 때문에 버블링이 필요
+
+        // li태그들에게 일일히 이벤트를 부여하면
+        // 새롭게 추가되는 li들도 또 이벤트를 부여해줘야 하는 번거로움이 생김
+
+        // 이럴 때, 부모태그인 ul에 범용성있는 이벤틀 부여해서
+        // li들이 버블링을 통해 사용하도록 설정
+
+        const $fruits = document.querySelector('#fruits');
+
+
+
+
+        // 태그에서 클래스 active를 제거하는 함수
+        const removeActive = () => {
+            [...$fruits.children].forEach($li => {
+                if($li.classList.contains('active')) {
+                    $li.classList.remove('active');
+                    return;
+                }
+            });
+        };
+
+
+
+        // 선택된 과일 이벤트
+        $fruits.onclick = e => {
+
+            // 이벤트 타겟 제한
+            // matches의 선택자가 일치하면 true (li누르면 true)
+            console.log(e.target.matches('#fruits > li'));
+            
+            if(!e.target.matches('#fruits > li')) { // true가 아니면 탈출!
+                return;
+            }
+
+
+
+
+            // console.log('클릭이벤트 발생!');
+            // console.log(e.target); // 부모한테 이벤트를 걸어도 e.target로 자식 어디에 걸린지 알 수 있음
+       
+
+            // 1. 주의! 부여하기 전에, 기존의 클래스 active가 붙은 태그에서 active제거하기
+           removeActive();
+
+            // 2. 클릭대상(e.target)에 클래스 active를 부여하고 (e.target은 태그객체(요소노드))
+            e.target.classList.add('active');
+
+            // 3. 그 텍스트를 em.msg태그에 복사한다.
+            const $msg = document.querySelector('.msg');
+            $msg.textContent = e.target.textContent;
+
+            // 근데 ul영역 하얀부분 누르면 자식들 다 선택됨...
+            // 그래서 이벤트 타겟을 제한해줘야함 (ul 누를때 작동하지마) -75번라인으로 ㄱㄱ!
+       
+        };
+
+
+
+
+
+
+        // 새로운 과일 추가 이벤트
+        // const $textInput = document.querySelector('[type=text]');
+        // console.log(($textInput));
+
+        // $textInput.addEventListener('change', e => {
+        //     const $newLi = document.createElement('li');
+        //     console.log($newLi);
+
+        //     $newLi.textContent = $textInput.value;
+        //     $fruits.appendChild($newLi);
+
+        //     $textInput.value = '';
+        // });
+
+
+
+        // $textInput.addEventListener('keyup', e => {
+        //     $textInput.style.background = 'hotpink';
+        // });
+
+        // $textInput.addEventListener('keydown', e => {
+        //     $textInput.style.background = 'limegreen';
+        // });
+
+
+
+
+
+
+
+        // 쌤이랑 같이한 것
+        // 새로운 과일 추가 이벤트
+        /*
+            입력창에 과일 이름을 쓰고 '추가' 버튼을 누르면  <-- 이벤트
+            입력창에 있는 텍스트가 <li id = '텍스트'>텍스트</li> 이런 형태로 생성되어 
+            ul의 끝자식으로 추가되어야 한다
+        */
+
+        const $addBtn = document.getElementById('add');
+
+        const $textInput = document.querySelector('.text-box');
+        // console.log($textInput);
+        // input박스에 '냐냐냥' 처보고 프로퍼티창에 그 '냐냐냥' 어디있는지 확인하기.  오 value에 있네!
+        // console.log($textInput.value);
+
+
+
+
+        // 함수로 빼기
+        function makeNewFruit() {
+            const text = $textInput.value;
+
+            const $newLi = document.createElement('li');
+            $newLi.setAttribute('id', text.toLowerCase());
+            $newLi.textContent = text;
+            // console.log($newLi);
+            $fruits.appendChild($newLi);
+
+            $textInput.value = '';
+        }
+
+        $addBtn.onclick = e => makeNewFruit();
+
+        $textInput.onkeyup = e => {
+             // console.log('추가버튼 클릭함!');
+            if (e.key === 'Enter') makeNewFruit();
+        }
+
+
+
+
+
+        // 박스 많아지면 밑으로 내려야 하는데
+
+
+
+
+      
+
+
+    </script>
+
+
+
+</body>
+</html>
