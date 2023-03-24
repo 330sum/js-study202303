@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">클릭하세요!</button>
+
+    <script>
+        // 핸들러
+        function hello() {
+            alert('안녕!');
+        }
+
+        const $btn = document.getElementById('btn');
+
+        /*
+        $btn.onclick = hello;
+
+        $btn.onclick = function() {
+            $btn.style.background = 'aqua';
+        };
+        */
+        // 내가 이벤트가 있는 버튼을 가져왔는데, 추가로 하나 더 이벤트 붙이고 싶은데, 이렇게 안됨
+
+
+        $btn.addEventListener('click', hello); //hello() 아님 (함수호출 아님! 함수자체 전달!) 
+        $btn.addEventListener('click', () => {
+            $btn.style.background = 'aqua';
+        });
+
+        // 단, 주의! 반복문 안에서 콜백함수 방식의이벤트 붙일때, 잘못하면 계속 이벤트가 붙어서 렉걸릴수도 있음
+        // 이런경우는 프로퍼티 방식의 이벤트 사용하기 (왜? 프로퍼티방식은 요소 하나당 이벤트핸들러 하나니까)
+        
+        // 핸들러 제거
+        // 단, 이름없는 함수는 제거 못함
+        $btn.removeEventListener('click', hello);
+        // 예로, 사진같은거 누르면 플로트로 띄워서 움직이다가 딱 놓았을 때 그자리에 놓이게 하는거 (리무브꼭필요)
+
+
+
+        // 콜백방식
+        
+
+
+    </script>
+
+</body>
+
+</html>
