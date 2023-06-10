@@ -10,7 +10,9 @@ $ npm install json-server -D
 ```
 
 - package.json에 추가
+
     : 라이브러리에 가상서버 실행시키려면 아래와 같이 명령어가 긴데 start로 축약시킴
+    
     : 5000번 포트에서 가상서버를 실행시키고, 데이터베이스는 db.json이라는 것을 쓰겠다는 의미
 ```json
 "scripts": {
